@@ -21,13 +21,15 @@ export default class Card extends Component {
   render() {
     return (
       <>
-        <li className="card" onClick={this.handleQuestionClick}>
-          <p className="question">{this.props.testData.Spa}</p>
+        <li>
+          <section className="card" onClick={this.handleQuestionClick}>
+            <p className="question">{this.props.testData.Spa}</p>
 
-          <p className="answer" style={{ display: "none" }}>
-            HIDE ME: {this.props.testData.Eng}
-          </p>
-          <p>know this answer already?</p>
+            <p className="answer" style={{ display: "none" }}>
+              HIDE ME: {this.props.testData.Eng}
+            </p>
+          </section>
+
           <button className="yesButton" name="notes" onClick={this.handleClick}>
             notes
           </button>

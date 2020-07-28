@@ -45,18 +45,22 @@ export default class Card extends Component {
 
     return (
       <>
-        <li className="card" onClick={this.handleQuestionClick}>
-          <p className="question">{diff[randomCardIndex].Spa}</p>
+        <li>
+          <section className="card" onClick={this.handleQuestionClick}>
+            <p className="question">{diff[randomCardIndex].Spa}</p>
 
-          <p className="answer" style={{ display: "none" }}>
-            HIDE ME: {diff[randomCardIndex].Eng}
-          </p>
-          <p>know this answer already?</p>
+            <p className="answer" style={{ display: "none" }}>
+              HIDE ME: {diff[randomCardIndex].Eng}
+            </p>
+          </section>
           <button className="yesButton" name="yes" onClick={this.handleClick}>
             yes
           </button>
           <button className="noButton" name="no" onClick={this.handleClick}>
             no
+          </button>
+          <button className="noButton" name="fav" onClick={this.handleClick}>
+            Favorite
           </button>
         </li>
       </>
