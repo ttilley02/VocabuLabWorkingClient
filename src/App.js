@@ -9,6 +9,8 @@ import Nav from "./components/Nav";
 import "./App.css";
 import Config from "./config";
 import Context from "./context";
+import PrivateRoute from './components/PrivateRoute'
+import PublicOnlyRoute from './components/PublicOnlyRoute'
 
 export default class App extends Component {
   state = {
@@ -53,18 +55,10 @@ export default class App extends Component {
           <Nav />
           <Switch>
             <Route exact path={"/"} component={LandingPage} />
-            <Route path={"/reg"} component={RegPage} />
-            <Route path={"/login"} component={LoginPage} />
-            <Route
-              exact
-              path="/profile"
-              render={() => <ProfilePage testData={this.state.testdata} />}
-            />
-            <Route
-              exact
-              path="/cards"
-              render={() => <CardListPage testData={this.state.testdata} />}
-            />
+            <PublicOnlyRoute path={"/reg"} component={RegPage} />
+            <PublicOnlyRoute path={"/login"} component={LoginPage} />
+            <PrivateRoute path={"/profile"} component={ProfilePage} />
+            <Route path={"/cards"} component={CardListPage} />
           </Switch>
         </div>
       </Context.Provider>

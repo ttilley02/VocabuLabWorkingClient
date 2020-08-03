@@ -30,21 +30,25 @@
 .App-link {
   color: #61dafb;
 }
-.header {
+.header div {
   display: inline-block;
+  margin-left: 14px;
+  margin-right: 14px;
 }
 
 .cardsList {
   float: left;
   align-content: center;
+  margin: 9px;
 }
 .cardsList li {
   float: left;
-  margin: 5px;
+  margin: 20px;
   list-style: none;
   border: solid black 2px;
-  min-height: 200px;
-  min-width: 200px;
+  min-height: 400px;
+  min-width: 500px;
+  
 }
 
 @keyframes App-logo-spin {

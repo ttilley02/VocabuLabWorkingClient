@@ -1,31 +1,57 @@
 import React, { Component } from "react";
-import Card from "../components/Card";
+import UserCards from "../components/UserCards";
 import Context from "../context";
+import config from '../config'
+import TokenService from '../services/token-service';
 
 export default class ProfilePage extends Component {
   static contextType = Context;
+
+  state = {
+    hasError: false,
+    cards: [],
+    users: [],
+    notes: [],
+    spa_content: {
+      value: "",
+      touched: false
+    },
+    eng_Content: {
+      value: "",
+      touched: false
+    }
+  };
+
+
+  componentDidMount() {
+    fetch(`${config.API_ENDPOINT}/api/cards/3/cards`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      },
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ cards: data });
+        console.log(this.state.cards)
+          }
+      )
+
+  }
+
+
+
   render() {
     return (
       <>
-        <h2>Saved Cards</h2>
         <ul className="cardsList">
-          {console.log(this.context)}
-          {this.context.cards.map((card, index) => {
-            return <Card key={index} testData={card} />;
-          })}
+        {this.state.cards.map(card =>
+        <UserCards
+          key={card.id}
+          card={card}
+          note ={card.note}
+        />
+        )}
         </ul>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <h2>Related Resources</h2>
       </>
     );
   }
