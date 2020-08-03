@@ -57,7 +57,7 @@ export default class Card extends Component {
             <p className="question">{card.spa_content}</p>
 
             <p className="answer" style={{ display: "none" }}>
-              HIDE ME: {card.eng_content}
+              {card.eng_content}
             </p>
           </section>
        
@@ -68,10 +68,10 @@ export default class Card extends Component {
           <button className="noButton" name="card,id"  onClick={this.handleDeleteClick}>
             delete
           </button>
-          <fieldset>
-          notes:<br />
-            {this.props.note}
-          </fieldset>
+          <section className="notes">
+          <h3>notes: </h3>
+            <div>{this.props.note}</div>
+          </section>
 
 
           </li>

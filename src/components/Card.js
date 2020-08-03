@@ -50,7 +50,7 @@ export default class Card extends Component {
             <p className="question">{card.spa_content}</p>
 
             <p className="answer" style={{ display: "none" }}>
-              HIDE ME: {card.eng_content}
+              {card.eng_content}
             </p>
           </section>
        

@@ -37,19 +37,59 @@
 }
 
 .cardsList {
-  float: left;
   align-content: center;
-  margin: 9px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.cardsList p{
+  font-family: 'roboto', sans-serif;
+  transition: all 0.3s ease-in-out;
+  font-size: x-large;
+  text-overflow: initial;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .cardsList li {
-  float: left;
-  margin: 20px;
+  display: inline-block;
+  margin: 10px;
   list-style: none;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  border-radius: 3px;
   border: solid black 2px;
-  min-height: 400px;
+  min-height: 500px;
   min-width: 500px;
+
   
 }
+
+.notes{
+  margin: 20px;
+}
+
+.notes p{
+  margin: 20px;
+}
+
+
+
+.cardsList button {
+  font-family: 'roboto', sans-serif;
+  font-size: large;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  background-color: burlywood;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 100px;
+  color: white;
+  margin-left: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+}
+
+
+
 
 @keyframes App-logo-spin {
   from {
