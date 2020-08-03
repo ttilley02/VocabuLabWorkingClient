@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import Context from "../context";
 
 export default class Card extends Component {
+  static contextType = Context;
   handleQuestionClick = ev => {
     ev.preventDefault();
     var x = ev.currentTarget.childNodes[1];
@@ -20,10 +22,6 @@ export default class Card extends Component {
   };
 
   render() {
-    let diffArray = [
-      this.props.testData.cardpool.Beginner,
-      this.props.testData.cardpool.Intermediate
-    ];
     let diff = diffArray[Math.floor(Math.random() * diffArray.length)];
 
     function randomInt(max) {

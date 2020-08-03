@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class Card extends Component {
   handleQuestionClick = ev => {
@@ -19,14 +20,16 @@ export default class Card extends Component {
   };
 
   render() {
+    const { cardContent } = this.props;
+
     return (
       <>
         <li>
           <section className="card" onClick={this.handleQuestionClick}>
-            <p className="question">{this.props.testData.Spa}</p>
+            <p className="question">{cardContent.spa_content}</p>
 
             <p className="answer" style={{ display: "none" }}>
-              HIDE ME: {this.props.testData.Eng}
+              HIDE ME: {cardContent.eng_content}
             </p>
           </section>
 
