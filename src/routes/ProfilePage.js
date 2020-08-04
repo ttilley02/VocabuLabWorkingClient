@@ -7,32 +7,20 @@ import TokenService from '../services/token-service';
 export default class ProfilePage extends Component {
   static contextType = Context;
 
-  state = {
-    hasError: false,
-    cards: [],
-    users: [],
-    notes: [],
-    spa_content: {
-      value: "",
-      touched: false
-    },
-    eng_Content: {
-      value: "",
-      touched: false
-    }
-  };
-
+  state ={
+    userCards:[]
+  }
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/api/cards/3/cards`, {
+    fetch(`${config.API_ENDPOINT}/api/cards/mycards`, {
       headers: {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       },
     })
       .then(response => response.json())
       .then(data => {
-        this.setState({ cards: data });
-        console.log(this.state.cards)
+        console.log(data)
+        
           }
       )
 
@@ -44,13 +32,13 @@ export default class ProfilePage extends Component {
     return (
       <>
         <ul className="cardsList">
-        {this.state.cards.map(card =>
+        {/* {this.state.userCards.map(card =>
         <UserCards
           key={card.id}
           card={card}
           note ={card.note}
         />
-        )}
+        )} */}
         </ul>
       </>
     );

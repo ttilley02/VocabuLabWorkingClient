@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Context from "../context";
 
 export default class Card extends Component {
