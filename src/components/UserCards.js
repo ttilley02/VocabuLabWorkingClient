@@ -56,7 +56,7 @@ export default class Card extends Component {
           <button className="noButton" name={card.id}  onClick={this.handleDeleteClick}>
             delete
           </button>
-          <p><Link to={{pathname:`/addNote/${card.id}`}} >Add a Note</Link>
+          <p><Link to={{pathname:`/addNote/${card.id}`}} history={this.props.history} >Add a Note</Link>
           <section className="">
           <h3>notes: </h3>
             <div>{this.props.note}</div>

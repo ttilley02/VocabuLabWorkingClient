@@ -9,12 +9,11 @@ export default class AddNote extends React.Component {
   static contextType = Context;
 
   handleSubmit = ev => {
-    
-    const { text } = ev.target
-  
-    ev.preventDefault();
-    console.log(this.props.match.params.cardId)
-        return fetch(`${config.API_ENDPOINT}/api/notes/`, {
+
+     const { text } = ev.target
+     ev.preventDefault();
+     console.log("eweee")
+        fetch(`${config.API_ENDPOINT}/api/notes/`, {
         method: 'PATCH',
         headers: {
           'content-type': 'application/json',
@@ -24,6 +23,9 @@ export default class AddNote extends React.Component {
           card_id : this.props.match.params.cardId,
           note : text.value
        })
+      })
+      .then(()=>{
+        this.props.history.push('/profile')
       })
    }
   
