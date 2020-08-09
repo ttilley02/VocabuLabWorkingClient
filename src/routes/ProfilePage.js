@@ -7,9 +7,21 @@ import TokenService from '../services/token-service';
 export default class ProfilePage extends Component {
   static contextType = Context;
 
-  state ={
-    userCards:[]
-  }
+  // state ={
+  //   cards:[]
+  // }
+
+
+  // noteClickUpdate = ( newNote, card_id) => {
+  //   this.setState(prevState => ({
+
+  //     userCards: prevState.userCards.map(
+  //       el => el.id === card_id? { ...el, note: newNote }: el
+  //     )
+    
+  //   }))
+  // };
+  
 
   componentDidMount() {
     fetch(`${config.API_ENDPOINT}/api/cards/mycards`, {
@@ -19,28 +31,32 @@ export default class ProfilePage extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         
-          }
+        this.context.updateFavoriteCards(data)
+         }
       )
-
   }
 
 
 
+
   render() {
+
+    console.log(this.context)
     return (
-      <>
-        <ul className="cardsList">
-        {/* {this.state.userCards.map(card =>
+      
+        <div className="arena">
+        {this.context.favoriteCards.map(card =>
         <UserCards
           key={card.id}
           card={card}
           note ={card.note}
+          noteClickUpdate = {this.noteClickUpdate}
+          history = {this.props.history}
         />
-        )} */}
-        </ul>
-      </>
+        )}
+        </div>
+      
     );
   }
 }

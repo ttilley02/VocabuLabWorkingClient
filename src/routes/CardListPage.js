@@ -3,18 +3,20 @@ import Context from "../context";
 import Card from "../components/Card";
 
 
+
 export default class LangChoice extends Component {
   static contextType = Context;
 
 
 
   renderCards() {
+    console.log("yes", this.context)
     const cardList  = this.context.cards
-    console.log(cardList)
     return cardList.map(card =>
       <Card
         key={card.id}
         card={card}
+        history={this.props.history}
       />
     )
   }
@@ -22,13 +24,13 @@ export default class LangChoice extends Component {
 
   render() {
     return (
-      <>
-        <ul className="cardsList">
-          
+     
+        <div className = 'arena'>
+                
           {this.renderCards()}
-          
-        </ul>
-      </>
+         
+        </div>
+     
     );
   }
 }

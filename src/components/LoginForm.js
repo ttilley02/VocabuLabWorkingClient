@@ -46,14 +46,16 @@ export default class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
+      <div className="login-box">
       <form className="LoginForm" onSubmit={this.handleSubmitJwtAuth}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
-        <div className="user_name">
-          <label htmlFor="LoginForm__user_name">User name</label>
+        <div className="user-box">
+          <label htmlFor="LoginForm__user_name">User name<br/> </label>
           <Input required name="user_name" id="LoginForm__user_name" />
         </div>
-        <div className="password">
-          <label htmlFor="LoginForm__password">Password</label>
+        <br/>
+        <div className="user-box">
+          <label htmlFor="LoginForm__password">Password<br/> </label>
           <Input
             required
             name="password"
@@ -61,8 +63,11 @@ export default class LoginForm extends Component {
             id="LoginForm__password"
           />
         </div>
+        <br />
         <Button type="submit">Login</Button>
       </form>
+      
+      </div>
     );
   }
 }

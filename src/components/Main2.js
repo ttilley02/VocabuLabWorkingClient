@@ -6,12 +6,11 @@ export default class Main1 extends Component {
       <>
         <section>
           <header>
-            <h3>Rate your Cards and Make additional notes</h3>
+            <h3>Cycle through cards containing content from the University of Texas Austin ciriculum with a focused approach to learning spanish.
+              FAVORITE your cards and personalize them with NOTES for later reference and extra practice.
+              <br/>
+            </h3>
           </header>
-          <p>
-            Save your cards and personalize them for reference later or share
-            with friends.
-          </p>
         </section>
       </>
     );

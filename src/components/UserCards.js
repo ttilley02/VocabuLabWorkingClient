@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import TokenService from '../services/token-service';
 import config from "../config";
+import { Link } from "react-router-dom";
+import Context from "../context";
 
 
 
 export default class Card extends Component {
+  static contextType = Context
 
   handleQuestionClick = ev => {
     ev.preventDefault();
@@ -16,67 +19,53 @@ export default class Card extends Component {
     }
   };
 
-  handleNoteClick = ev => {
+
+
+  handleDeleteClick = ev => {
     ev.preventDefault();
     this.setState({ error: null });
+    
     let cardId = ev.target.name;
-    let note = ev.target.value;
-  
     
-    
-    console.log(TokenService.getAuthToken())
-
-    return fetch(`${config.API_ENDPOINT}/api/notes/`, {
-      method: 'POST',
+    return fetch(`${config.API_ENDPOINT}/api/notes/`+cardId, {
+      method: 'DELETE',
       headers: {
         'content-type': 'application/json',
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       },
-      body: JSON.stringify({
-        note: note,
-        card_id : cardId
-
-      }),
     })
-  }
-
-  handleDeleteClick = ev => {
-    ev.preventDefault();
-
-  }
+    .then(
+        this.context.deleteNotefromPage(cardId)
+    )
+ }
   
     
 
   
   render() {
     const {card} = this.props
-    console.log(card.id)
+    
        return (
-         <li>
-          <section className="card" onClick={this.handleQuestionClick}>
-            <p className="question">{card.spa_content}</p>
-
-            <p className="answer" style={{ display: "none" }}>
-              {card.eng_content}
-            </p>
-          </section>
+<div className="flip flip-vertical">
+    <div className="front" >
+       <h1 className="text-shadow">{card.spa_content}</h1>
+    </div>
+    <div className="back">
+       <h2>{card.eng_content}</h2>
        
-
-          <button className="yesButton" name={card.id} value="testme" onClick={this.handleNoteClick}>
-            notes
-          </button>
-          <button className="noButton" name="card,id"  onClick={this.handleDeleteClick}>
+          <button className="noButton" name={card.id}  onClick={this.handleDeleteClick}>
             delete
           </button>
-          <section className="notes">
+          <p><Link to={{pathname:`/addNote/${card.id}`}} >Add a Note</Link>
+          <section className="">
           <h3>notes: </h3>
             <div>{this.props.note}</div>
           </section>
+       </p>
+    </div>
+</div>
 
 
-          </li>
-          
-        
       
     );
   }

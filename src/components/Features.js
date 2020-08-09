@@ -6,18 +6,16 @@ export default class Features extends Component {
       <>
         <ul list-style="none" className="main">
           <li>
-            <p>
-              Detailed Etymology
-              <br />
-              Get into the weeds with grammar and context
-            </p>
+            <h3>
+              Beginner and Intermediate card exercises powered by the University of Texas Spanish Program.
+              Get into the weeds with grammar, phrases and vocab that range from causal to business travel.
+              Designed to assist in conversations with a wide range of variety from numbers to describing your work day!
+            </h3>
           </li>
           <br />
           <li>
             <p>
-              Audio/Video Samples
-              <br />
-              Learn how to pronounce and sound more natural
+
             </p>
           </li>
 

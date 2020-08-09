@@ -39,6 +39,7 @@ export default class RegistrationForm extends Component {
           <label htmlFor="RegistrationForm__full_name">
             Full name <Required />
           </label>
+          <br/>
           <Input
             name="full_name"
             type="text"
@@ -46,10 +47,13 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__full_name"
           />
         </div>
+        <br/>
         <div className="user_name">
           <label htmlFor="RegistrationForm__user_name">
             User name <Required />
           </label>
+          <br/>
+          
           <Input
             name="user_name"
             type="text"
@@ -57,10 +61,12 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__user_name"
           />
         </div>
+        <br/>
         <div className="password">
           <label htmlFor="RegistrationForm__password">
             Password <Required />
           </label>
+          <br/>
           <Input
             name="password"
             type="password"
@@ -68,8 +74,10 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__password"
           />
         </div>
+        <br/>
         <div className="nick_name">
           <label htmlFor="RegistrationForm__nick_name">Nickname</label>
+          <br/>
           <Input
             name="nick_name"
             type="text"
@@ -77,6 +85,7 @@ export default class RegistrationForm extends Component {
             id="RegistrationForm__nick_name"
           />
         </div>
+        <br/>
         <Button type="submit">Register</Button>
       </form>
     );

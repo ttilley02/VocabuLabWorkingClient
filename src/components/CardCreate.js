@@ -19,7 +19,6 @@ export default class Card extends Component {
     this.setState({ error: null });
 
     //put this in a function to update user pool preferences
-    console.log(ev.target.name);
   };
 
   render() {
