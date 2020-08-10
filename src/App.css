@@ -78,9 +78,14 @@ h1 {
   background-position: center !important;
   height: 220px;
   padding: 1em 2em;
-  background: #335563;
+  background: #335563 ;
   border-radius: 10px;
 }
+
+.flip2{
+  background: #aa7b16 ;
+}
+
 .flip > .front p,
 .flip > .back p {
   font-size: 0.9125rem;

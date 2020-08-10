@@ -21,17 +21,12 @@ export default class App extends Component {
   state = {
     hasError: false,
     cards: [],
-    favoriteCards: []
+    favoriteCards: [],
+    
   };
 
   updateFavoriteCards = favs => {
     this.setState({ favoriteCards: favs });
-  }
-
-  updateFavoriteCardNote = (note , id) => {
-    let cardtoUpdate = this.state.favoriteCards.find(card => card.id === Number(id))
-    console.log(cardtoUpdate.id)
-
   }
 
   deleteNotefromPage = id => {
