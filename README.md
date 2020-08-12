@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 # Spanish VocabuLab Client(Working)
--build up your vocabulary with flash cards based on exercises from the University of Texas Austin beginner and intermediate spanish ciriculum
+-build up your vocabulary with flash cards based on exercises from the University of Texas Austin beginner and intermediate spanish curriculum
 -go through various flash cards, favorite ones you like and take notes on them to personalize them in your profile.
 
 
