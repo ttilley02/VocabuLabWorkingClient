@@ -9,65 +9,63 @@ import Nav from "./components/Nav";
 import "./App.css";
 import Config from "./config";
 import Context from "./context";
-import PrivateRoute from './components/PrivateRoute'
-import PublicOnlyRoute from './components/PublicOnlyRoute'
-import AddNote from './components/AddNote'
-import TokenService from './services/token-service'
-
+import PrivateRoute from "./components/PrivateRoute";
+import PublicOnlyRoute from "./components/PublicOnlyRoute";
+import AddNote from "./components/AddNote";
+import TokenService from "./services/token-service";
 
 export default class App extends Component {
-
-
   state = {
     hasError: false,
     cards: [],
     favoriteCards: [],
-    
+    UserLoggedIn: ""
   };
 
-  updateFavoriteCards = favs => {
+  updateFavoriteCards = (favs) => {
     this.setState({ favoriteCards: favs });
-  }
-
-  deleteNotefromPage = id => {
-    let stateCopy= this.state.favoriteCards.filter(card => card.id !== Number(id))
-    this.setState({ favoriteCards: stateCopy });
-    
   };
 
+  deleteNotefromPage = (id) => {
+    let stateCopy = this.state.favoriteCards.filter(
+      (card) => card.id !== Number(id)
+    );
+    this.setState({ favoriteCards: stateCopy });
+  };
+
+  updateLogIn = (yesOrNo) => {
+    this.setState({ UserLoggedIn: yesOrNo });
+  };
 
   componentDidMount() {
     //fetch request for cards
-    let areWeLoggedIn = TokenService.getAuthToken()
-    if( areWeLoggedIn === null){ 
-    fetch(Config.API_ENDPOINT +"/api/cards")
-      .then(response => response.json())
-      .then(data => {
-        //store response in this.state.cards
+    let areWeLoggedIn = TokenService.getAuthToken();
+    if (areWeLoggedIn === null) {
+      fetch(Config.API_ENDPOINT + "/api/cards")
+        .then((response) => response.json())
+        .then((data) => {
+          //store response in this.state.cards
 
-        this.setState({ cards: data });
-      });
-    }
-      else{ 
-      
-      fetch(Config.API_ENDPOINT +"/api/cards")
-      .then(response => response.json())
-      .then(data => {
-        //store response in this.state.cards
+          this.setState({ cards: data });
+        });
+    } else {
+      fetch(Config.API_ENDPOINT + "/api/cards")
+        .then((response) => response.json())
+        .then((data) => {
+          //store response in this.state.cards
 
-        this.setState({ cards: data });
-      })   
+          this.setState({ cards: data });
+        });
       fetch(`${Config.API_ENDPOINT}/api/cards/mycards`, {
-      headers: {
-        'Authorization': `bearer ${TokenService.getAuthToken()}`
-      },
-    })
-      .then(response => response.json())
-      .then(data => {
-        this.updateFavoriteCards(data)
-          }
-      )
-   }
+        headers: {
+          Authorization: `bearer ${TokenService.getAuthToken()}`
+        }
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          this.updateFavoriteCards(data);
+        });
+    }
   }
 
   static getDerivedStateFromError(error) {
@@ -80,20 +78,29 @@ export default class App extends Component {
       cards: this.state.cards,
       favoriteCards: this.state.favoriteCards,
       updateFavoriteCards: this.updateFavoriteCards,
-      deleteNotefromPage: this.deleteNotefromPage
+      deleteNotefromPage: this.deleteNotefromPage,
+      updateLogIn: this.updateLogIn
     };
     return (
       <Context.Provider value={contextValue}>
         <div className="App">
-          <Nav />
-          <Switch>
-            <Route exact path={"/"} component={LandingPage} />
-            <PublicOnlyRoute path={"/reg"} component={RegPage} />
-            <PublicOnlyRoute path={"/login"} component={LoginPage} />
-            <PrivateRoute path={"/profile"} component={ProfilePage} />
-            <PrivateRoute path={"/addNote/:cardId"} component={AddNote} />
-            <Route path={"/cards"} component= {CardListPage} />
-          </Switch>
+          <header className="App__header">
+            <Nav />
+          </header>
+          <main className="App__main">
+            {this.state.hasError && (
+              <p className="red">There was an error! Oh no!</p>
+            )}
+
+            <Switch>
+              <Route exact path={"/"} component={LandingPage} />
+              <PublicOnlyRoute path={"/reg"} component={RegPage} />
+              <PublicOnlyRoute path={"/login"} component={LoginPage} />
+              <PrivateRoute path={"/profile"} component={ProfilePage} />
+              <PrivateRoute path={"/addNote/:cardId"} component={AddNote} />
+              <Route path={"/cards"} component={CardListPage} />
+            </Switch>
+          </main>
         </div>
       </Context.Provider>
     );
