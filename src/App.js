@@ -44,17 +44,32 @@ export default class App extends Component {
       fetch(Config.API_ENDPOINT + "/api/cards")
         .then((response) => response.json())
         .then((data) => {
-          //store response in this.state.cards
+          //store response in this.state.cards. 3 random cards
 
-          this.setState({ cards: data });
+          let cardArray = [];
+          let random1 = Math.floor(Math.random() * 189 - 1);
+          let random2 = Math.floor(Math.random() * 189 - 1);
+          let random3 = Math.floor(Math.random() * 189 - 1);
+          cardArray.push(data[random1]);
+          cardArray.push(data[random2]);
+          cardArray.push(data[random3]);
+
+          this.setState({ cards: cardArray });
         });
     } else {
       fetch(Config.API_ENDPOINT + "/api/cards")
         .then((response) => response.json())
         .then((data) => {
-          //store response in this.state.cards
+          //store response in this.state.cards. 3 random cards
+          let cardArray = [];
+          let random1 = Math.floor(Math.random() * 189 - 1);
+          let random2 = Math.floor(Math.random() * 189 - 1);
+          let random3 = Math.floor(Math.random() * 189 - 1);
+          cardArray.push(data[random1]);
+          cardArray.push(data[random2]);
+          cardArray.push(data[random3]);
 
-          this.setState({ cards: data });
+          this.setState({ cards: cardArray });
         });
       fetch(`${Config.API_ENDPOINT}/api/cards/mycards`, {
         headers: {
