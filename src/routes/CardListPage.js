@@ -5,6 +5,7 @@ import Card from "../components/Card";
 export default class LangChoice extends Component {
   static contextType = Context;
 
+  componentDidMount;
   renderCards() {
     const cardList = this.context.cards;
     return cardList.map((card) => (
