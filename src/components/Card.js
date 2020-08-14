@@ -18,7 +18,15 @@ export default class Card extends Component {
 
   handleClick = (ev) => {
     ev.preventDefault();
+
     this.setState({ error: null });
+
+    var x = ev.target;
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
     let fav = ev.target.name;
     return fetch(`${config.API_ENDPOINT}/api/cards/fav/${fav}`, {
       method: "POST",
